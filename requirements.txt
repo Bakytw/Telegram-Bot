@@ -1,0 +1,4 @@
+telebot==0.0.5
+requests==2.22.0
+pandas==1.5.3
+seaborn==0.12.2
