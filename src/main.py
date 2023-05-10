@@ -10,12 +10,17 @@ bot = telebot.TeleBot(TOKEN)
 df = pd.DataFrame()
 
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start'])
 def start(message):
-    '''Ответ на запросы /start, /help'''
-    msg = f'Я могу помочь тебе с выбором профессии следующим образом: ты можешь написать мне интересующую тебя вакансию, а я могу дать тебе информацию по заработной плате этой профессии!'
+    '''Ответ на запросы /start'''
+    msg = 'Я могу помочь тебе с выбором профессии следующим образом: ты можешь написать мне интересующую тебя вакансию, а я могу дать тебе информацию по заработной плате этой профессии!'
     bot.send_message(message.chat.id, msg, parse_mode='html')
 
+@bot.message_handler(commands=['help'])
+def start(message):
+    '''Ответ на запросы /help'''
+    msg = 'Напиши мне любую профессию. Например, "аналитик данных", и я приведу тебе таблицу зарплат среди вакансий на выбранную профессию!'
+    bot.send_message(message.chat.id, msg, parse_mode='html')
 
 @bot.message_handler(content_types=['text'])
 def send_stats(message):
